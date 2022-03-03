@@ -4,8 +4,6 @@ buttonReset.addEventListener('click', reset );
 var buttonSend = document.getElementById('button');
 buttonSend.addEventListener('click',createDiv)
 
-
-
 function valores(n1,n2) {   
    media = n1 * n2;
    return media;
@@ -37,16 +35,10 @@ function getData() {
             var REFRI_FIXO = 1250; // litros refri 
             var BEBIDAS_FIXO = 4; // LATAS
         }
-    
-    
+ 
         let adultosAll = parseInt(qtdAdultos) + parseInt(qtdAdultosAlcool);
         var kidsMoreAdults = adultosAll + parseInt(qtdKids); 
-        console.log(adultosAll + " são adultos");
-        console.log(qtdKids + " são Crianças");
-        console.log(kidsMoreAdults + '');
-    
-        //CÁLCULOS CARNE 
-    
+ 
         var calcCarneAdultos = valores(CARNE_FIXO_ADULTO,adultosAll);
     
         var calcCarneKids = valores(CARNE_FIXO_CRIANCA,qtdKids);
@@ -56,7 +48,6 @@ function getData() {
         var calcBebidas = valores(BEBIDAS_FIXO,qtdAdultosAlcool); // qtdAdultosAlcool
         var calcRefri = valores(REFRI_FIXO,kidsMoreAdults - qtdAdultosAlcool); //PESSOAS + CRIANÇAS 
         
-    
         qtdSoda.innerHTML = calcRefri + " litros ou " +  (Math.ceil(calcRefri / 2000)) + " garrafa(s) de 2L";
         qtdBeef.innerHTML = calcCarneGeral + "g de Carne equivalente à " + (calcCarneGeral / 1000) + " kg";
         qtdBeer.innerHTML = calcBebidas + " latas equivalente à " + ((calcBebidas * 350)/1000) + "L";
@@ -64,7 +55,6 @@ function getData() {
     }
 
 }
-
 function createDiv(){
 
     let body = document.getElementById('body')
@@ -99,13 +89,9 @@ function createDiv(){
     let qtdBeer = document.createElement('p');
     qtdBeer.setAttribute('id','qtdBeer');
 
-
-
-    // VIEW APPEND
     body.appendChild(div);
     div.appendChild(h2);
-    div.appendChild(span)
-    // IMG APPEND;
+
     div.appendChild(imgBeef);
     div.appendChild(p_beef);
     div.appendChild(qtdBeef)
@@ -120,7 +106,6 @@ function createDiv(){
 
     addEventListener('click',getData);  
 }   
-
 function reset(){
     window.location.reload();
 }
