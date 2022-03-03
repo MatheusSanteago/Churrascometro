@@ -1,12 +1,10 @@
-var qtdAdultos = document.getElementById('qtd_adultos').value;
-var qtdKids = document.getElementById('qtd_crianca').value;
-var kidsMoreAdults = parseInt(qtdAdultos) + parseInt(qtdKids);
-
 var buttonReset = document.getElementById('reset');
-buttonReset.removeEventListener('click',createDiv);
+buttonReset.addEventListener('click', reset );
 
 var buttonSend = document.getElementById('button');
 buttonSend.addEventListener('click',createDiv)
+
+
 
 function valores(n1,n2) {   
    media = n1 * n2;
@@ -15,39 +13,55 @@ function valores(n1,n2) {
 
 function getData() {
 
-    const CARNE_FIXO_ADULTO = 400.0;
-    const CARNE_FIXO_CRIANCA = 200.0;
-    const REFRI_FIXO = 1250; // litros refri 
-    const BEBIDAS_FIXO = 4; // LATAS
-
-
+    var qtdHoras = document.getElementById('qtd_horas').value;
     let qtdAdultos = document.getElementById('qtd_adultos').value;
     let qtdAdultosAlcool = document.getElementById('qtd_adultos_alcool').value;
     let qtdKids = document.getElementById('qtd_crianca').value;
-
-
-    let adultosAll = parseInt(qtdAdultos) + parseInt(qtdAdultosAlcool);
-    var kidsMoreAdults = adultosAll + parseInt(qtdKids); 
-    console.log(adultosAll + " são adultos");
-    console.log(qtdKids + " são Crianças");
-    console.log(kidsMoreAdults + '');
-
-    //CÁLCULOS CARNE 
-
-    var calcCarneAdultos = valores(CARNE_FIXO_ADULTO,adultosAll);
-
-    var calcCarneKids = valores(CARNE_FIXO_CRIANCA,qtdKids);
-
-    var calcCarneGeral = parseInt(calcCarneAdultos) + parseInt(calcCarneKids);
-
-    var calcBebidas = valores(BEBIDAS_FIXO,qtdAdultosAlcool); // qtdAdultosAlcool
-    var calcRefri = valores(REFRI_FIXO,kidsMoreAdults - qtdAdultosAlcool); //PESSOAS + CRIANÇAS 
     
-
-    qtdSoda.innerHTML = calcRefri + " litros ou " +  (Math.ceil(calcRefri / 2000)) + " garrafa(s) de 2L";
-    qtdBeef.innerHTML = calcCarneGeral + "g de Carne equivalente à " + (calcCarneGeral / 1000) + " kg";
-    qtdBeer.innerHTML = calcBebidas + " latas equivalente à " + ((calcBebidas * 350)/1000) + "L";
-
+    if (qtdAdultos == 0 && qtdKids == 0 && qtdHoras == 0){
+        alert('Insira algum valor!');
+        window.location.reload();
+    } 
+    else if (qtdAdultos < 0 || qtdKids < 0 ){
+        alert('Digite valores Positivos'); 
+        window.location.reload();
+    } else {
+        if (qtdHoras >= 6){
+            var CARNE_FIXO_ADULTO = 650.0;
+            var CARNE_FIXO_CRIANCA = 300.0;
+            var REFRI_FIXO = 1600; // litros refri 
+            var BEBIDAS_FIXO = 7; // LATAS
+        } else if (qtdHoras < 6){
+            var CARNE_FIXO_ADULTO = 400.0;
+            var CARNE_FIXO_CRIANCA = 200.0;
+            var REFRI_FIXO = 1250; // litros refri 
+            var BEBIDAS_FIXO = 4; // LATAS
+        }
+    
+    
+        let adultosAll = parseInt(qtdAdultos) + parseInt(qtdAdultosAlcool);
+        var kidsMoreAdults = adultosAll + parseInt(qtdKids); 
+        console.log(adultosAll + " são adultos");
+        console.log(qtdKids + " são Crianças");
+        console.log(kidsMoreAdults + '');
+    
+        //CÁLCULOS CARNE 
+    
+        var calcCarneAdultos = valores(CARNE_FIXO_ADULTO,adultosAll);
+    
+        var calcCarneKids = valores(CARNE_FIXO_CRIANCA,qtdKids);
+    
+        var calcCarneGeral = parseInt(calcCarneAdultos) + parseInt(calcCarneKids);
+    
+        var calcBebidas = valores(BEBIDAS_FIXO,qtdAdultosAlcool); // qtdAdultosAlcool
+        var calcRefri = valores(REFRI_FIXO,kidsMoreAdults - qtdAdultosAlcool); //PESSOAS + CRIANÇAS 
+        
+    
+        qtdSoda.innerHTML = calcRefri + " litros ou " +  (Math.ceil(calcRefri / 2000)) + " garrafa(s) de 2L";
+        qtdBeef.innerHTML = calcCarneGeral + "g de Carne equivalente à " + (calcCarneGeral / 1000) + " kg";
+        qtdBeer.innerHTML = calcBebidas + " latas equivalente à " + ((calcBebidas * 350)/1000) + "L";
+        span.innerHTML =  "para " + kidsMoreAdults + " pessoa(s)";
+    }
 
 }
 
@@ -60,6 +74,9 @@ function createDiv(){
 
     let h2 = document.createElement('h2');
     h2.innerHTML = "Quantidade necessária";
+
+    let span = document.createElement('span');
+    span.setAttribute('id', 'span')
 
     let imgBeef = document.createElement('img');
     imgBeef.src ="/CSS/assets/carne.png"
@@ -82,10 +99,12 @@ function createDiv(){
     let qtdBeer = document.createElement('p');
     qtdBeer.setAttribute('id','qtdBeer');
 
+
+
     // VIEW APPEND
     body.appendChild(div);
     div.appendChild(h2);
-
+    div.appendChild(span)
     // IMG APPEND;
     div.appendChild(imgBeef);
     div.appendChild(p_beef);
@@ -101,3 +120,7 @@ function createDiv(){
 
     addEventListener('click',getData);  
 }   
+
+function reset(){
+    window.location.reload();
+}
