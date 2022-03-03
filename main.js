@@ -52,10 +52,10 @@ function getData() {
         var calcBebidas = valores(BEBIDAS_FIXO,qtdAdultosAlcool); // qtdAdultosAlcool
         var calcRefri = valores(REFRI_FIXO,kidsMoreAdults - qtdAdultosAlcool); //PESSOAS + CRIANÇAS 
         
-        qtdSoda.innerHTML = calcRefri + " litros ou " +  (Math.ceil(calcRefri / 2000)) + " garrafa(s) de 2L";
-        qtdBeef.innerHTML = calcCarneGeral + "g de Carne equivalente à " + (calcCarneGeral / 1000) + " kg";
-        qtdBeer.innerHTML = calcBebidas + " latas equivalente à " + ((calcBebidas * 350)/1000) + "L";
-        span.innerHTML =  "para " + kidsMoreAdults + " pessoa(s)";
+        qtdSoda.innerHTML = `${calcRefri} litros ou ${(Math.ceil(calcRefri / 2000))} garrafa(s) de 2L`;
+        qtdBeef.innerHTML =`${calcCarneGeral} g de Carne equivalente à ${(calcCarneGeral / 1000)}kg`;
+        qtdBeer.innerHTML = `${calcBebidas} latas equivalente à ${((calcBebidas * 350)/1000)}L`;
+        span.innerHTML =  `para ${kidsMoreAdults} pessoa(s)"`;
     }
 
 }
