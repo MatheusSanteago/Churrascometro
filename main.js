@@ -2,7 +2,7 @@ var buttonReset = document.getElementById('reset');
 buttonReset.addEventListener('click', reset );
 
 var buttonSend = document.getElementById('button');
-buttonSend.addEventListener('click',createDiv)
+buttonSend.addEventListener('click',createDiv);
 
 function valores(n1,n2) {   
    media = n1 * n2;
@@ -31,7 +31,7 @@ function getData() {
         if (qtdHoras >= 6){
             var CARNE_FIXO_ADULTO = 650.0;
             var CARNE_FIXO_CRIANCA = 300.0;
-            var REFRI_FIXO = 1600; // litros refri 
+            var REFRI_FIXO = 1500; // litros refri 
             var BEBIDAS_FIXO = 7; // LATAS
         } else if (qtdHoras < 6){
             var CARNE_FIXO_ADULTO = 400.0;
@@ -61,23 +61,26 @@ function getData() {
 }
 function createDiv(){
 
-    let body = document.getElementById('body')
+    let verify = document.getElementById('containerJS')
+    if (verify) verify.remove();
+
+    let body = document.getElementById('body');
 
     let div = document.createElement('div');
-    div.setAttribute('id','containerJS')
+    div.setAttribute('id','containerJS');
 
     let h2 = document.createElement('h2');
     h2.innerHTML = "Quantidade necessária";
 
     let span = document.createElement('span');
-    span.setAttribute('id', 'span')
+    span.setAttribute('id', 'span');
 
     let imgBeef = document.createElement('img');
-    imgBeef.src ="/CSS/assets/carne.png"
+    imgBeef.src ="/CSS/assets/carne.png";
     let p_beef = document.createElement('p');
     p_beef.innerHTML = "Quantidade de Carne necessária: ";
     let qtdBeef = document.createElement('p');
-    qtdBeef.setAttribute('id','qtdBeef')
+    qtdBeef.setAttribute('id','qtdBeef');
 
     let imgSoda = document.createElement('img');
     imgSoda.src = "/CSS/assets/refri.png";
