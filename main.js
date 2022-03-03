@@ -16,10 +16,14 @@ function getData() {
     let qtdAdultosAlcool = document.getElementById('qtd_adultos_alcool').value;
     let qtdKids = document.getElementById('qtd_crianca').value;
     
-    if (qtdAdultos == 0 && qtdKids == 0 && qtdHoras == 0){
+    if (qtdAdultos == 0 && qtdKids == 0){
         alert('Insira algum valor!');
         window.location.reload();
     } 
+    else if (qtdHoras == 0) {
+        alert('Digite a Duração do Evento'); 
+        window.location.reload();
+    }
     else if (qtdAdultos < 0 || qtdKids < 0 ){
         alert('Digite valores Positivos'); 
         window.location.reload();
