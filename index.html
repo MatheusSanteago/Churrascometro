@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,15 +13,13 @@
         <h1>Cálculo para Churrasco</h1>
         <form>
             <p>Quantidade de Adultos</p>
-            <img src="/CSS/assets/adulto.png" alt="adultos"><input type="number" id="qtd_adultos" value="0"></input>
+            <img src="/CSS/assets/adulto.png" alt="adultos"><input type="number" id="qtd_adultos" value="0" min="0"></input>
             <p>Quantidade de Adultos <span></span><br>(Bebidas Alcoolicas)</p>
-            <img src="/CSS/assets/adulto.png" alt="adultos"><input type="number" id="qtd_adultos_alcool" value="0"></input>
+            <img src="/CSS/assets/adulto.png" alt="adultos"><input type="number" id="qtd_adultos_alcool" value="0"  min="0" ></input>
             <p>Quantidade de Crianças</p>
-            <img src="/CSS/assets/kids.png" alt="crianças"><input type="number" id="qtd_crianca" value="0"></input><br>
-            <div id="button">Calcular</div>
-            <button id="button_reset">Refazer</button><br>
-            <p id="textbox" onmouseout="infoOUT()" onmouseover="infoOVER()">Insira todos os valores<span></span><br> mesmo que seja igual a zero</p>
-
+            <img src="/CSS/assets/kids.png" alt="crianças"><input type="number" id="qtd_crianca" value="0"  min="0"></input><br>
+            <div id="button"><a href="#containerJS"> Calcular</a></div>
+            <div id="reset">Refazer</div><br>
         </form>
     </div>
         

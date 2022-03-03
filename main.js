@@ -2,7 +2,7 @@ var qtdAdultos = document.getElementById('qtd_adultos').value;
 var qtdKids = document.getElementById('qtd_crianca').value;
 var kidsMoreAdults = parseInt(qtdAdultos) + parseInt(qtdKids);
 
-var buttonReset = document.getElementById('button_reset');
+var buttonReset = document.getElementById('reset');
 buttonReset.removeEventListener('click',createDiv);
 
 var buttonSend = document.getElementById('button');
@@ -17,7 +17,7 @@ function getData() {
 
     const CARNE_FIXO_ADULTO = 400.0;
     const CARNE_FIXO_CRIANCA = 200.0;
-    const REFRI_FIXO = 1500; // litros refri 
+    const REFRI_FIXO = 1250; // litros refri 
     const BEBIDAS_FIXO = 4; // LATAS
 
 
@@ -25,19 +25,23 @@ function getData() {
     let qtdAdultosAlcool = document.getElementById('qtd_adultos_alcool').value;
     let qtdKids = document.getElementById('qtd_crianca').value;
 
-    kidsMoreAdults = parseInt(qtdAdultos) +  (parseInt(qtdKids) - 0.5); // 0,5 - EVITAR EXCESSO
-    console.log(kidsMoreAdults);
+
+    let adultosAll = parseInt(qtdAdultos) + parseInt(qtdAdultosAlcool);
+    var kidsMoreAdults = adultosAll + parseInt(qtdKids); 
+    console.log(adultosAll + " são adultos");
+    console.log(qtdKids + " são Crianças");
+    console.log(kidsMoreAdults + '');
 
     //CÁLCULOS CARNE 
-    var calcCarneAdultos = valores(CARNE_FIXO_ADULTO,qtdAdultos);
-    var calcCarneAdultosAlcool = valores(CARNE_FIXO_ADULTO,qtdAdultosAlcool);
-    let carneAdultos = (calcCarneAdultos + calcCarneAdultosAlcool);
-    
+
+    var calcCarneAdultos = valores(CARNE_FIXO_ADULTO,adultosAll);
+
     var calcCarneKids = valores(CARNE_FIXO_CRIANCA,qtdKids);
-    var calcCarneGeral = parseInt(carneAdultos) + parseInt(calcCarneKids);
+
+    var calcCarneGeral = parseInt(calcCarneAdultos) + parseInt(calcCarneKids);
 
     var calcBebidas = valores(BEBIDAS_FIXO,qtdAdultosAlcool); // qtdAdultosAlcool
-    var calcRefri = valores(REFRI_FIXO,kidsMoreAdults); //PESSOAS + CRIANÇAS 
+    var calcRefri = valores(REFRI_FIXO,kidsMoreAdults - qtdAdultosAlcool); //PESSOAS + CRIANÇAS 
     
 
     qtdSoda.innerHTML = calcRefri + " litros ou " +  (Math.ceil(calcRefri / 2000)) + " garrafa(s) de 2L";
@@ -97,17 +101,3 @@ function createDiv(){
 
     addEventListener('click',getData);  
 }   
-
-function infoOVER(){
-    let alert = document.getElementById('textbox');
-
-    alert.innerHTML = " Desenvolvido por<span></span><br> <a href='https://www.linkedin.com/in/matheus-santeago-443016226/'> Matheus Santeago! </a>";
-}
-function infoOUT(){
-    let alert = document.getElementById('textbox');
-
-    alert.innerHTML = "Insira todos os valores<span></span><br> mesmo que seja igual a zero";
-}
-  
-  
-
