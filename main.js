@@ -31,13 +31,13 @@ function getData() {
         if (qtdHoras >= 6){
             var CARNE_FIXO_ADULTO = 650.0;
             var CARNE_FIXO_CRIANCA = 300.0;
-            var REFRI_FIXO = 1500; // litros refri 
-            var BEBIDAS_FIXO = 7; // LATAS
+            var REFRI_FIXO = 1100; 
+            var BEBIDAS_FIXO = 7; 
         } else if (qtdHoras < 6){
             var CARNE_FIXO_ADULTO = 400.0;
             var CARNE_FIXO_CRIANCA = 200.0;
-            var REFRI_FIXO = 1250; // litros refri 
-            var BEBIDAS_FIXO = 4; // LATAS
+            var REFRI_FIXO = 1350; 
+            var BEBIDAS_FIXO = 4; 
         }
  
         let adultosAll = parseInt(qtdAdultos) + parseInt(qtdAdultosAlcool);
